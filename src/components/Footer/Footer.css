@@ -1,0 +1,11 @@
+.footerPos {
+  position: absolute;
+  top: 0;
+}
+
+.Logo {
+  -o-object-fit: contain;
+     object-fit: contain;
+  height: 5vh;
+  padding: 0.7rem;
+}/*# sourceMappingURL=Footer.css.map */

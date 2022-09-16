@@ -1,0 +1,50 @@
+.ccr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ccc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.toLeft {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.zm1 {
+  z-index: -1;
+}
+
+.zm2 {
+  z-index: -2;
+}
+
+.z1 {
+  z-index: 1;
+}
+
+.z2 {
+  z-index: 2;
+}
+
+.LRMargin {
+  margin: 0px 15vw 0px 15vw;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.cancelTextdecoration {
+  text-decoration: none;
+}
+
+.basicBox {
+  width: 200px;
+  height: 200px;
+}

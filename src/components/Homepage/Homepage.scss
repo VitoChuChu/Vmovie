@@ -1,0 +1,33 @@
+.carousel-caption {
+  position: absolute;
+  padding: 1rem;
+  width: 100%;
+  height: 20vh;
+  left: 0;
+  bottom: 0;
+  text-align: start;
+  backdrop-filter: blur(3px) brightness(50%);
+  -moz-backdrop-filter: blur(3px) brightness(50%);
+}
+
+.carousel-inner {
+  height: 0;
+  padding-top: 42%;
+}
+.carousel-item {
+  position: absolute !important;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.carousel-item img {
+  height: 100%;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 450px) {
+  .carousel-inner {
+    padding-top: 90%;
+  }
+}
