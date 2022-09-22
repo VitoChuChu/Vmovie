@@ -13,15 +13,10 @@ import NotFoundPage from "./components/NotFoundPage/NotFoundPage.js";
 
 function App() {
   const [status, setStatue] = useState(false);
-  const [route, setRoute] = useState("leading");
   const [searchKey, setSearchKey] = useState("");
 
   const onStatusChange = (x) => {
     setStatue(x);
-  };
-
-  const onRouteChange = (x) => {
-    setRoute(x);
   };
 
   const scrollToTop = () => {
@@ -33,22 +28,13 @@ function App() {
 
   return (
     <div className="App">
-      {route === "leading" ? null : (
-        <Nav
-          status={status}
-          setRoute={setRoute}
-          setSearchKey={setSearchKey}
-          scrollToTop={scrollToTop}
-          onRouteChange={onRouteChange}
-        />
-      )}
-
+      <Nav
+        status={status}
+        setSearchKey={setSearchKey}
+        scrollToTop={scrollToTop}
+      />
       <Routes>
-        <Route
-          path="/Vmovie/"
-          exact
-          element={<Leading onRouteChange={onRouteChange} />}
-        />
+        <Route path="/Vmovie/" exact element={<Leading />} />
         <Route
           path="/Vmovie/homepage"
           exact

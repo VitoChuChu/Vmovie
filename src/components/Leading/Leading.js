@@ -6,6 +6,7 @@ import LogoB from "../../img/VmovieLogoBS.svg";
 const Leading = ({ setRoute, onRouteChange }) => {
   return (
     <div className="container-fluid leadingBKG p-0">
+      <div style={{ height: "66px" }}></div>
       <div className="row">
         <img className="col-xl-3 py-4" src={LogoB} alt="Vmovie" />
         <div className="col-xl-8"></div>

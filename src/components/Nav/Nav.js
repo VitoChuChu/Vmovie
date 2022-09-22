@@ -2,16 +2,12 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import LogoY from "../../img/VmovieLogoYS.svg";
 
-const Nav = ({ setRoute, onRouteChange, setSearchKey, scrollToTop }) => {
+const Nav = ({ setSearchKey, scrollToTop }) => {
   const [input, setInput] = useState("");
   const searchMovies = (e) => {
     e.preventDefault();
   };
 
-  const setRouteScrollToTop = (x) => {
-    scrollToTop();
-    onRouteChange(x);
-  };
   const handleSearchKeyScrollToTop = () => {
     scrollToTop();
     setSearchKey(input);
@@ -28,7 +24,7 @@ const Nav = ({ setRoute, onRouteChange, setSearchKey, scrollToTop }) => {
             width="120"
             height="40"
             onClick={() => {
-              setRouteScrollToTop("leading");
+              scrollToTop();
             }}
           />
         </Link>
@@ -52,7 +48,9 @@ const Nav = ({ setRoute, onRouteChange, setSearchKey, scrollToTop }) => {
                 aria-current="page"
                 to="/Vmovie/homepage"
                 style={{ color: "white" }}
-                onClick={() => setRouteScrollToTop("homepage")}
+                onClick={() => {
+                  scrollToTop();
+                }}
               >
                 Home
               </Link>
@@ -62,7 +60,9 @@ const Nav = ({ setRoute, onRouteChange, setSearchKey, scrollToTop }) => {
                 className="nav-link mb-0 pointer"
                 to="/Vmovie/topRated"
                 style={{ color: "white" }}
-                onClick={() => setRouteScrollToTop("topRated")}
+                onClick={() => {
+                  scrollToTop();
+                }}
               >
                 Top rated movies
               </Link>
