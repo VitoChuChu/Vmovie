@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Vmovie/static/css/main.a14925d5.css",
-    "main.js": "/Vmovie/static/js/main.630d08bd.js",
+    "main.js": "/Vmovie/static/js/main.f3112413.js",
     "static/media/Tapes.jpg": "/Vmovie/static/media/Tapes.2b05296140478718d4dd.jpg",
     "static/media/leaderImg.jpg": "/Vmovie/static/media/leaderImg.40fc12189afb44c5ae3b.jpg",
     "static/media/VmovieLogoYS.svg": "/Vmovie/static/media/VmovieLogoYS.97d61e245cb3d0d574d2605839ac3fbf.svg",
@@ -12,10 +12,10 @@
     "static/media/Tralier.svg": "/Vmovie/static/media/Tralier.ebdfe523be2708f0da82d49bbac8cb9b.svg",
     "index.html": "/Vmovie/index.html",
     "main.a14925d5.css.map": "/Vmovie/static/css/main.a14925d5.css.map",
-    "main.630d08bd.js.map": "/Vmovie/static/js/main.630d08bd.js.map"
+    "main.f3112413.js.map": "/Vmovie/static/js/main.f3112413.js.map"
   },
   "entrypoints": [
     "static/css/main.a14925d5.css",
-    "static/js/main.630d08bd.js"
+    "static/js/main.f3112413.js"
   ]
 }
