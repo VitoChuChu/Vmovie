@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Vmovie/static/css/main.a14925d5.css",
-    "main.js": "/Vmovie/static/js/main.e1c724b9.js",
+    "main.css": "/Vmovie/static/css/main.7bd9b1cf.css",
+    "main.js": "/Vmovie/static/js/main.dfe5445b.js",
     "static/media/Tapes.jpg": "/Vmovie/static/media/Tapes.2b05296140478718d4dd.jpg",
     "static/media/leaderImg.jpg": "/Vmovie/static/media/leaderImg.40fc12189afb44c5ae3b.jpg",
     "static/media/VmovieLogoYS.svg": "/Vmovie/static/media/VmovieLogoYS.97d61e245cb3d0d574d2605839ac3fbf.svg",
@@ -11,11 +11,11 @@
     "static/media/TMBD.png": "/Vmovie/static/media/TMBD.56d33b39eee0e509d540.png",
     "static/media/Tralier.svg": "/Vmovie/static/media/Tralier.ebdfe523be2708f0da82d49bbac8cb9b.svg",
     "index.html": "/Vmovie/index.html",
-    "main.a14925d5.css.map": "/Vmovie/static/css/main.a14925d5.css.map",
-    "main.e1c724b9.js.map": "/Vmovie/static/js/main.e1c724b9.js.map"
+    "main.7bd9b1cf.css.map": "/Vmovie/static/css/main.7bd9b1cf.css.map",
+    "main.dfe5445b.js.map": "/Vmovie/static/js/main.dfe5445b.js.map"
   },
   "entrypoints": [
-    "static/css/main.a14925d5.css",
-    "static/js/main.e1c724b9.js"
+    "static/css/main.7bd9b1cf.css",
+    "static/js/main.dfe5445b.js"
   ]
 }
