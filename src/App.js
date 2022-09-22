@@ -31,10 +31,6 @@ function App() {
     });
   };
 
-  const Loading = () => {
-    <div className="loader"></div>;
-  };
-
   return (
     <div className="App">
       {route === "leading" ? null : (
@@ -49,17 +45,17 @@ function App() {
 
       <Routes>
         <Route
-          path="/"
+          path="/Vmovie/"
           exact
           element={<Leading onRouteChange={onRouteChange} />}
         />
         <Route
-          path="/homepage"
+          path="/Vmovie/homepage"
           exact
           element={<Homepage scrollToTop={scrollToTop} />}
         />
         <Route
-          path="/topRated"
+          path="/Vmovie/topRated"
           exact
           element={<TopRated scrollToTop={scrollToTop} />}
         />
@@ -69,11 +65,11 @@ function App() {
           element={<MyList status={status} />}
         /> */}
         <Route
-          path={`/filmInfo/:id`}
+          path={`/Vmovie/filmInfo/:id`}
           element={<FilmInfo scrollToTop={scrollToTop} />}
         />
         <Route
-          path={`/search`}
+          path={`/Vmovie/search`}
           element={<Search searchKey={searchKey} scrollToTop={scrollToTop} />}
         />
         <Route path="*" element={<NotFoundPage />} />
