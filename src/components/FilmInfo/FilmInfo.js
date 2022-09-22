@@ -99,7 +99,6 @@ const FilmInfo = ({ scrollToTop }) => {
         dialogClassName="modal-90w"
         aria-labelledby="contained-modal-title-vcenter"
         centered
-        fullscreen={"md-down"}
       >
         <Modal.Header closeButton>
           <Modal.Title
@@ -114,6 +113,7 @@ const FilmInfo = ({ scrollToTop }) => {
             className="container-fluid"
             url={youtubeUrl + video.key}
             playing
+            muted
             width="70vw"
             height="50vh"
             controls={true}

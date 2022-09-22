@@ -179,14 +179,16 @@ const Homepage = ({ scrollToTop }) => {
     return (
       <SwiperSlide key={uuidv4()}>
         <div className="ccc">
-          <div className="img-wrapper">
-            <img
-              className="img-fluid blur"
-              src={item.poster_path}
-              alt={item.title}
-            />
-            <p className="content fade text-center">{item.title}</p>
-          </div>
+          <Link to={`/Vmovie/filmInfo/${item.id}`}>
+            <div className="img-wrapper">
+              <img
+                className="img-fluid blur"
+                src={item.poster_path}
+                alt={item.title}
+              />
+              <p className="content fade text-center">{item.title}</p>
+            </div>
+          </Link>
           <h5 className="textPos text-center">{item.title}</h5>
         </div>
       </SwiperSlide>
@@ -205,14 +207,18 @@ const Homepage = ({ scrollToTop }) => {
           </div>
         </div>
         <div className="row mt-3 ccr">
-          <h2 className="text-center">Which genre you wanna to have?</h2>
+          <h2 className="text-center" style={{ color: "#f4c10f" }}>
+            Which genre you wanna to have?
+          </h2>
           <div className="col-11">
             <ul className="list-inline m-0 ccr">{generList}</ul>
           </div>
         </div>
         <div className="row mt-3 ccr">
           <div className="col-10">
-            <h2 className="text-center">Here you go</h2>
+            <h2 className="text-center" style={{ color: "#f4c10f" }}>
+              Here you go
+            </h2>
             <Swiper
               slidesPerView={5}
               spaceBetween={20}
@@ -250,7 +256,9 @@ const Homepage = ({ scrollToTop }) => {
         </div>
         <div className="row mt-3 ccr">
           <div className="col-10">
-            <h2 className="text-center">What hot this week</h2>
+            <h2 className="text-center" style={{ color: "#f4c10f" }}>
+              What hot this week
+            </h2>
             <Swiper
               slidesPerView={5}
               spaceBetween={20}
@@ -288,7 +296,9 @@ const Homepage = ({ scrollToTop }) => {
         </div>
         <div className="row mt-3 ccr">
           <div className="col-10">
-            <h2 className="text-center">Now Playing movies</h2>
+            <h2 className="text-center" style={{ color: "#f4c10f" }}>
+              Now Playing movies
+            </h2>
             <Swiper
               slidesPerView={5}
               spaceBetween={20}
@@ -326,7 +336,9 @@ const Homepage = ({ scrollToTop }) => {
         </div>
         <div className="row mt-3 ccr">
           <div className="col-10">
-            <h2 className="text-center">Upcoming movies</h2>
+            <h2 className="text-center" style={{ color: "#f4c10f" }}>
+              Upcoming movies
+            </h2>
             <Swiper
               slidesPerView={5}
               spaceBetween={20}

@@ -20,7 +20,7 @@ const NotFoundPage = ({}) => {
           <h3 className="mb-3">Page not Found.</h3>
           <Link
             className="fs-5 glow-on-hover ccc cancelTextdecoration m-3"
-            to="/Vmovie/homepage"
+            to="/Vmovie/"
           >
             Back to homepage
           </Link>
