@@ -1,4 +1,6 @@
-## #Vmovie
+# Vmovie
+
+---
 
 Hi There! Welcome to **Vmovie**!
 
@@ -20,7 +22,7 @@ Even you can find what is the most people loved movie in the movie history!! The
 - Login and Register. (On working, will release soon.)
 - Wishlist to save your favorite movies. (On working, will release soon.)
 
-##㊙️ Libraries & FrameWorks & Tool ㊙️
+## ㊙️ Libraries & FrameWorks & Tool ㊙️
 
 - React.js
 - Bootstrap 5
