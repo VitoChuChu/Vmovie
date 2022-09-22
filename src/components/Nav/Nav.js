@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import LogoY from "../../img/VmovieLogoYS.svg";
 
-const Nav = ({ setRoute, status }) => {
+const Nav = ({ setRoute, onRouteChange, setSearchKey, scrollToTop }) => {
+  const [input, setInput] = useState("");
+  const searchMovies = (e) => {
+    e.preventDefault();
+  };
+
+  const setRouteScrollToTop = (x) => {
+    scrollToTop();
+    onRouteChange(x);
+  };
+  const handleSearchKeyScrollToTop = () => {
+    scrollToTop();
+    setSearchKey(input);
+    document.getElementById("Input").value = "";
+  };
+
   return (
     <nav className="navbar navbar-expand-lg bg-dark fixed-top">
       <div className="container-fluid">
@@ -13,7 +28,7 @@ const Nav = ({ setRoute, status }) => {
             width="120"
             height="40"
             onClick={() => {
-              setRoute("leading");
+              setRouteScrollToTop("leading");
             }}
           />
         </Link>
@@ -25,33 +40,34 @@ const Nav = ({ setRoute, status }) => {
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          style={{ backgroundColor: "#f4c10f" }}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div className="navbar-collapse collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-0 mb-lg-0 fs-5">
-            <li className="nav-item">
+            <li className="nav-item mx-3">
               <Link
                 className="nav-link active mb-0 pointer"
                 aria-current="page"
                 to="/homepage"
                 style={{ color: "white" }}
-                onClick={() => setRoute("homepage")}
+                onClick={() => setRouteScrollToTop("homepage")}
               >
                 Home
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item mx-3">
               <Link
                 className="nav-link mb-0 pointer"
                 to="/topRated"
                 style={{ color: "white" }}
-                onClick={() => setRoute("topRated")}
+                onClick={() => setRouteScrollToTop("topRated")}
               >
-                Top rated 20
+                Top rated movies
               </Link>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item mx-3">
               <Link
                 className="nav-link mb-0 pointer"
                 to="/myList"
@@ -60,32 +76,47 @@ const Nav = ({ setRoute, status }) => {
               >
                 My wishlist
               </Link>
-            </li>
+            </li> */}
           </ul>
-          {status === true ? (
-            <li className="navbar-nav mb-lg-0 fs-5 nav-item pointer">
+          {/* {status === true ? (
+            <li className="navbar-nav mb-lg-0 fs-5 nav-item pointer mx-3">
               <Link className="nav-link mb-0" to="/" style={{ color: "white" }}>
                 Logout
               </Link>
             </li>
           ) : (
-            <li className="navbar-nav  mb-lg-0 fs-5 nav-item pointer">
+            <li className="navbar-nav  mb-lg-0 fs-5 nav-item pointer mx-3">
               <Link className="nav-link mb-0" to="/" style={{ color: "white" }}>
                 Login
               </Link>
             </li>
-          )}
-
-          <form className="d-flex" role="search">
+          )} */}
+          <form className="d-flex" onSubmit={searchMovies}>
             <input
               className="form-control me-2"
-              type="search"
+              style={{ width: "400px" }}
+              type="text"
               placeholder="Search"
-              aria-label="Search"
+              id="Input"
+              onChange={(e) => {
+                setInput(e.target.value);
+              }}
             />
-            <button className="btn btn-outline-light" type="submit">
-              Search
-            </button>
+            <Link
+              className="nav-link mb-0"
+              to="/search"
+              style={{ color: "white" }}
+            >
+              <button
+                className="btn btn-outline-light"
+                type="submit"
+                onClick={() => {
+                  handleSearchKeyScrollToTop();
+                }}
+              >
+                Search
+              </button>
+            </Link>
           </form>
         </div>
       </div>

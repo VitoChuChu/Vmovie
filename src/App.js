@@ -8,77 +8,75 @@ import Homepage from "./components/Homepage/Homepage.js";
 import TopRated from "./components/TopRated/TopRated.js";
 import MyList from "./components/MyList/MyList.js";
 import FilmInfo from "./components/FilmInfo/FilmInfo.js";
+import Search from "./components/Search/Search.js";
+import NotFoundPage from "./components/NotFoundPage/NotFoundPage.js";
 
 function App() {
-  let [status, setStatue] = useState(false);
-  let [route, setRoute] = useState("leading");
-  let [popM, setPopM] = useState([]);
-  let [nowM, setNowM] = useState([]);
-  let [upM, setUpM] = useState([]);
-  let [topM, setTopM] = useState([]);
+  const [status, setStatue] = useState(false);
+  const [route, setRoute] = useState("leading");
+  const [searchKey, setSearchKey] = useState("");
 
-  useEffect(() => {
-    fetchPopM();
-    fetchNowPlayingM();
-    fetchUpcomingM();
-    fetchTopRatedM();
-  }, [route]);
-
-  const fetchPopM = async () => {
-    await fetch(
-      "https://api.themoviedb.org/3/trending/movie/week?api_key=0256639a2d7d7afd446f8a3d2dcc94b1"
-    )
-      .then((resp) => resp.json())
-      .then((data) => setPopM(data.results));
-  };
-  const fetchNowPlayingM = async () => {
-    await fetch(
-      "https://api.themoviedb.org/3/movie/now_playing?api_key=0256639a2d7d7afd446f8a3d2dcc94b1&language=en-US&page=1&region=TW"
-    )
-      .then((resp) => resp.json())
-      .then((data) => setNowM(data.results));
-  };
-  const fetchUpcomingM = async () => {
-    await fetch(
-      "https://api.themoviedb.org/3/movie/upcoming?api_key=0256639a2d7d7afd446f8a3d2dcc94b1&language=en-US&page=1&region=TW"
-    )
-      .then((resp) => resp.json())
-      .then((data) => setUpM(data.results));
-  };
-  const fetchTopRatedM = async () => {
-    await fetch(
-      "https://api.themoviedb.org/3/movie/top_rated?api_key=0256639a2d7d7afd446f8a3d2dcc94b1&language=en-US&page=1&region=TW"
-    )
-      .then((resp) => resp.json())
-      .then((data) => setTopM(data.results));
-  };
-
-  // Statue,route change
   const onStatusChange = (x) => {
     setStatue(x);
   };
+
   const onRouteChange = (x) => {
     setRoute(x);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const Loading = () => {
+    <div className="loader"></div>;
+  };
+
   return (
     <div className="App">
-      <Nav status={status} setRoute={setRoute} />
-      {/* {route === "leading" ? null : <Nav status={status} setRoute={setRoute} />} */}
+      {route === "leading" ? null : (
+        <Nav
+          status={status}
+          setRoute={setRoute}
+          setSearchKey={setSearchKey}
+          scrollToTop={scrollToTop}
+          onRouteChange={onRouteChange}
+        />
+      )}
+
       <Routes>
         <Route
           path="/"
           exact
-          element={<Leading setRoute={setRoute} fetchPopM={fetchPopM} />}
+          element={<Leading onRouteChange={onRouteChange} />}
         />
         <Route
           path="/homepage"
           exact
-          element={<Homepage popM={popM} nowM={nowM} upM={upM} />}
+          element={<Homepage scrollToTop={scrollToTop} />}
         />
-        <Route path="/topRated" exact element={<TopRated topM={topM} />} />
-        <Route path="/myList" exact element={<MyList status={status} />} />
-        <Route path="/filmInfo" exact element={<FilmInfo />} />
+        <Route
+          path="/topRated"
+          exact
+          element={<TopRated scrollToTop={scrollToTop} />}
+        />
+        {/* <Route
+          path="/myList"
+          exact
+          element={<MyList status={status} />}
+        /> */}
+        <Route
+          path={`/filmInfo/:id`}
+          element={<FilmInfo scrollToTop={scrollToTop} />}
+        />
+        <Route
+          path={`/search`}
+          element={<Search searchKey={searchKey} scrollToTop={scrollToTop} />}
+        />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </div>

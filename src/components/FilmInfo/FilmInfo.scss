@@ -5,8 +5,8 @@
 .FilmInfoBKG {
   position: absolute;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  min-height: 100vh;
+  object-fit: contain;
   z-index: 0;
   filter: brightness(0.5) sepia(1);
 }
@@ -17,7 +17,51 @@
   backdrop-filter: blur(7px);
 }
 
-.FilmInfoSmallBKG {
-  width: 300px;
-  height: 400px;
+.divSize {
+  width: 16vw;
+  height: 47vh;
+}
+
+.imgSize {
+  width: 15vw;
+  height: 40vh;
+}
+
+.similarImgSize {
+  width: 15vw;
+  height: 40vh;
+}
+
+.step {
+  height: 15vh;
+}
+
+@media screen and (max-width: 1024px) {
+  .divSize {
+    width: auto;
+    height: auto;
+  }
+  .imgSize {
+    width: 25vw;
+    height: 35vh;
+  }
+  .similarImgSize {
+    width: 25vw;
+    height: 35vh;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .similarImgSize {
+    width: 65vw;
+    height: 30vh;
+  }
+  .step {
+    height: 5vh;
+  }
+}
+
+.modal-90w {
+  width: 90%;
+  max-width: none !important;
 }

@@ -5,6 +5,12 @@
 
 .Logo {
   object-fit: contain;
-  height: 5vh;
+  width: 300px;
   padding: 0.7rem;
+}
+
+@media screen and (max-width: 767px) {
+  .Logo {
+    width: 250px;
+  }
 }
