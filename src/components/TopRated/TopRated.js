@@ -61,7 +61,10 @@ const TopRated = ({}) => {
             >
               {item.overview}
             </p>
-            <Link to={`/filmInfo/${item.id}`} className="cancelTextdecoration">
+            <Link
+              to={`/Vmovie/filmInfo/${item.id}`}
+              className="cancelTextdecoration"
+            >
               <h3
                 className="pointer"
                 style={{ color: "black", margin: "1vh", color: "#f4c10f" }}

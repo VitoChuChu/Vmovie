@@ -21,7 +21,7 @@ const Nav = ({ setRoute, onRouteChange, setSearchKey, scrollToTop }) => {
   return (
     <nav className="navbar navbar-expand-lg bg-dark fixed-top">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand" to="/Vmovie/">
           <img
             src={LogoY}
             alt="Vmovie"
@@ -50,7 +50,7 @@ const Nav = ({ setRoute, onRouteChange, setSearchKey, scrollToTop }) => {
               <Link
                 className="nav-link active mb-0 pointer"
                 aria-current="page"
-                to="/homepage"
+                to="/Vmovie/homepage"
                 style={{ color: "white" }}
                 onClick={() => setRouteScrollToTop("homepage")}
               >
@@ -60,7 +60,7 @@ const Nav = ({ setRoute, onRouteChange, setSearchKey, scrollToTop }) => {
             <li className="nav-item mx-3">
               <Link
                 className="nav-link mb-0 pointer"
-                to="/topRated"
+                to="/Vmovie/topRated"
                 style={{ color: "white" }}
                 onClick={() => setRouteScrollToTop("topRated")}
               >
@@ -104,7 +104,7 @@ const Nav = ({ setRoute, onRouteChange, setSearchKey, scrollToTop }) => {
             />
             <Link
               className="nav-link mb-0"
-              to="/search"
+              to="/Vmovie/search"
               style={{ color: "white" }}
             >
               <button

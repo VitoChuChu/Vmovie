@@ -44,7 +44,7 @@ const Homepage = ({ scrollToTop }) => {
   const nowPlayingMovies = nowM.slice(0, 5).map((item) => {
     return (
       <Carousel.Item key={uuidv4()}>
-        <Link to={`/filmInfo/${item.id}`}>
+        <Link to={`/Vmovie/filmInfo/${item.id}`}>
           <img
             className="d-block w-100"
             src={item.backdrop_path}
@@ -65,7 +65,7 @@ const Homepage = ({ scrollToTop }) => {
     return (
       <SwiperSlide key={uuidv4()}>
         <div className="ccc">
-          <Link to={`/filmInfo/${item.id}`}>
+          <Link to={`/Vmovie/filmInfo/${item.id}`}>
             <div className="img-wrapper">
               <img
                 className="img-fluid blur"
@@ -113,7 +113,7 @@ const Homepage = ({ scrollToTop }) => {
     return (
       <SwiperSlide key={uuidv4()}>
         <div className="ccc">
-          <Link to={`/filmInfo/${item.id}`}>
+          <Link to={`/Vmovie/filmInfo/${item.id}`}>
             <div className="img-wrapper">
               <img
                 className="img-fluid blur"
@@ -146,7 +146,7 @@ const Homepage = ({ scrollToTop }) => {
     return (
       <SwiperSlide key={uuidv4()}>
         <div className="ccc">
-          <Link to={`/filmInfo/${item.id}`}>
+          <Link to={`/Vmovie/filmInfo/${item.id}`}>
             <div className="img-wrapper">
               <img
                 className="img-fluid blur"

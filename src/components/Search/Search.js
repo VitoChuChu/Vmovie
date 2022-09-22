@@ -20,7 +20,7 @@ const Search = ({ searchKey, scrollToTop }) => {
         style={{ width: "18rem", height: "25rem" }}
         key={uuidv4()}
       >
-        <Link to={`/filmInfo/${item.id}`}>
+        <Link to={`/Vmovie/filmInfo/${item.id}`}>
           <img
             className="card-img-top"
             src={item.poster_path}

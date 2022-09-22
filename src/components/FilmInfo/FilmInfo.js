@@ -73,7 +73,7 @@ const FilmInfo = ({ scrollToTop }) => {
         className="col-12 col-md-6 col-lg-2 text-center m-1 divSize"
         key={uuidv4()}
       >
-        <Link to={`/filmInfo/${m.id}`}>
+        <Link to={`/Vmovie/filmInfo/${m.id}`}>
           <img
             className="rounded mx-auto d-sm-block similarImgSize"
             src={m.poster_path}

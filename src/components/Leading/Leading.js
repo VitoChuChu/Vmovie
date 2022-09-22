@@ -28,7 +28,7 @@ const Leading = ({ setRoute, onRouteChange }) => {
         <Link
           className="col-xl-3 col-md-5 fs-2 glow-on-hover ccc cancelTextdecoration"
           onClick={() => onRouteChange("homepage")}
-          to="/homepage"
+          to="/Vmovie/homepage"
         >
           THIS WAY
         </Link>
