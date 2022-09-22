@@ -23,13 +23,13 @@
 }
 
 .imgSize {
-  width: 15vw;
-  height: 40vh;
+  width: 12vw;
+  height: 32vh;
 }
 
 .similarImgSize {
-  width: 15vw;
-  height: 40vh;
+  width: 12vw;
+  height: 32vh;
 }
 
 .step {
@@ -53,7 +53,7 @@
 
 @media screen and (max-width: 767px) {
   .similarImgSize {
-    width: 65vw;
+    width: 60vw;
     height: 30vh;
   }
   .step {

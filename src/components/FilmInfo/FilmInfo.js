@@ -138,7 +138,7 @@ const FilmInfo = ({ scrollToTop }) => {
         </div>
         <div className="step"></div>
         <div className="row FilterDiv ccr">
-          <div className="col-lg-4 col-md-8 text-center">
+          <div className="col-lg-3 col-md-8 text-center">
             <img className="img-fluid" src={imgUrl} alt={detail.title} />
           </div>
           <div className="col-lg-8 col-md-8">
