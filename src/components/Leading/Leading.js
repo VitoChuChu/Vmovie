@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Leading.css";
 import LogoB from "../../img/VmovieLogoBS.svg";
 
-const Leading = ({ setRoute, onRouteChange }) => {
+const Leading = ({}) => {
   return (
     <div className="container-fluid leadingBKG p-0">
       <div style={{ height: "66px" }}></div>
@@ -28,7 +28,6 @@ const Leading = ({ setRoute, onRouteChange }) => {
         <div className="col-xl-8"></div>
         <Link
           className="col-xl-3 col-md-5 fs-2 glow-on-hover ccc cancelTextdecoration"
-          onClick={() => onRouteChange("homepage")}
           to="/Vmovie/homepage"
         >
           THIS WAY
