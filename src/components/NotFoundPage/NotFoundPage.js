@@ -17,10 +17,11 @@ const NotFoundPage = ({}) => {
               />
             </a>
           </div>
+          <h3 className="mb-3">Something wrong...</h3>
           <h3 className="mb-3">Page not Found.</h3>
           <Link
             className="fs-5 glow-on-hover ccc cancelTextdecoration m-3"
-            to="/Vmovie/"
+            to="/Vmovie/homepage"
           >
             Back to homepage
           </Link>

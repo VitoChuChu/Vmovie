@@ -179,16 +179,14 @@ const Homepage = ({ scrollToTop }) => {
     return (
       <SwiperSlide key={uuidv4()}>
         <div className="ccc">
-          <Link to={`/Vmovie/filmInfo/${item.id}`}>
-            <div className="img-wrapper">
-              <img
-                className="img-fluid blur"
-                src={item.poster_path}
-                alt={item.title}
-              />
-              <p className="content fade text-center">{item.title}</p>
-            </div>
-          </Link>
+          <div className="img-wrapper">
+            <img
+              className="img-fluid blur"
+              src={item.poster_path}
+              alt={item.title}
+            />
+            <p className="content fade text-center">{item.title}</p>
+          </div>
           <h5 className="textPos text-center">{item.title}</h5>
         </div>
       </SwiperSlide>

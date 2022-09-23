@@ -12,7 +12,6 @@ import Search from "./components/Search/Search.js";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage.js";
 
 function App() {
-  console.log(process.env.REACT_APP_APIKEY);
   const [status, setStatue] = useState(false);
   const [searchKey, setSearchKey] = useState("");
 
@@ -26,6 +25,26 @@ function App() {
       behavior: "smooth",
     });
   };
+
+  class ErrorBoundary extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = { error: null, errorInfo: null };
+    }
+    componentDidCatch(error, errorInfo) {
+      this.setState({
+        error: error,
+        errorInfo: errorInfo,
+      });
+    }
+    render() {
+      if (this.state.errorInfo) {
+        return <NotFoundPage />;
+      }
+      // Normally, just render children
+      return this.props.children;
+    }
+  }
 
   return (
     <div className="App">
@@ -53,7 +72,9 @@ function App() {
         /> */}
         <Route
           path={`/Vmovie/filmInfo/:id`}
-          element={<FilmInfo scrollToTop={scrollToTop} />}
+          element={
+            <FilmInfo scrollToTop={scrollToTop} ErrorBoundary={ErrorBoundary} />
+          }
         />
         <Route
           path={`/Vmovie/search`}

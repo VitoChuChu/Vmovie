@@ -130,6 +130,7 @@ export const fetchMovieVideos = async (id) => {
     return dataResult[0];
   } catch (error) {
     console.log(error);
+    return;
   }
 };
 

@@ -14,7 +14,7 @@ import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 import Trailer from "../../img/Tralier.svg";
 
-const FilmInfo = ({ scrollToTop }) => {
+const FilmInfo = ({ scrollToTop, ErrorBoundary }) => {
   const params = useParams();
   const [detail, setDetail] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -125,100 +125,108 @@ const FilmInfo = ({ scrollToTop }) => {
   const imgUrl = `https://image.tmdb.org/t/p/original/${detail.poster_path}`;
   const imgUrl_low = `https://image.tmdb.org/t/p/w780/${detail.backdrop_path}`;
   return (
-    <div>
-      <div className="container-fluid p-0">
-        <MoviePalyerModal
-          show={isOpen}
-          onHide={() => {
-            setIsOpen(false);
-          }}
-        ></MoviePalyerModal>
-        <div>
-          <img className="FilmInfoBKG" src={imgUrl_low} alt={detail.name} />
-        </div>
-        <div className="step"></div>
-        <div className="row FilterDiv ccr">
-          <div className="col-lg-3 col-md-8 text-center">
-            <img className="img-fluid" src={imgUrl} alt={detail.title} />
+    <ErrorBoundary>
+      <div>
+        <div className="container-fluid p-0">
+          <MoviePalyerModal
+            show={isOpen}
+            onHide={() => {
+              setIsOpen(false);
+            }}
+          ></MoviePalyerModal>
+          <div>
+            <img className="FilmInfoBKG" src={imgUrl_low} alt={detail.name} />
           </div>
-          <div className="col-lg-8 col-md-8">
-            <div className="row">
-              <div className="col-12 col-lg-12">
-                <h1 className="">{detail.title}</h1>
-              </div>
-              <div className="col-12 col-lg-12 d-none d-sm-block">
-                <ul className="list-inline">{genresList}</ul>
-              </div>
-              <div className="col-12 col-lg-3">
-                <h5 className="fw-bolder" style={{ color: "#f4c10f" }}>
-                  Run time
-                </h5>
-                <p className="">{detail.runtime}mins</p>
-              </div>
-              <div className="col-12 col-lg-3">
-                <h5 className="fw-bolder" style={{ color: "#f4c10f" }}>
-                  Release Date
-                </h5>
-                <p className="">{detail.release_date}</p>
-              </div>
-              <div className="col-6 d-none d-sm-block">
-                <h5 className="fw-bolder" style={{ color: "#f4c10f" }}>
-                  Offical website
-                </h5>
-                <a
-                  href={detail.homepage}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  {detail.homepage}
-                </a>
-              </div>
-              <div className="col-12">
-                <h5 className="fw-bolder" style={{ color: "#f4c10f" }}>
-                  Overview
-                </h5>
-                <p className="col-12">{detail.overview}</p>
-              </div>
-              <div className="col-12">
-                <img
-                  className="pointer"
-                  src={Trailer}
-                  alt="Trailer"
-                  onClick={() => setIsOpen(true)}
-                  style={{ width: "150px" }}
-                />
-              </div>
+          <div className="step"></div>
+          <div className="row FilterDiv ccr">
+            <div className="col-lg-3 col-md-8 text-center">
+              <img className="img-fluid" src={imgUrl} alt={detail.title} />
             </div>
-          </div>
-        </div>
-        <div className="row FilterDiv">
-          <div className="col-lg-12 col-md-12 col-12 m-1">
-            <h3 className="fw-bolder text-center" style={{ color: "#f4c10f" }}>
-              Cast
-            </h3>
-            <div className="d-none d-md-block">
-              <div className="ccr">{castList}</div>
-            </div>
-            <div className="d-md-none">
-              <div className="ccc">{castList}</div>
+            <div className="col-lg-8 col-md-8">
+              <div className="row">
+                <div className="col-12 col-lg-12">
+                  <h1 className="">{detail.title}</h1>
+                </div>
+                <div className="col-12 col-lg-12 d-none d-sm-block">
+                  <ul className="list-inline">{genresList}</ul>
+                </div>
+                <div className="col-12 col-lg-3">
+                  <h5 className="fw-bolder" style={{ color: "#f4c10f" }}>
+                    Run time
+                  </h5>
+                  <p className="">{detail.runtime}mins</p>
+                </div>
+                <div className="col-12 col-lg-3">
+                  <h5 className="fw-bolder" style={{ color: "#f4c10f" }}>
+                    Release Date
+                  </h5>
+                  <p className="">{detail.release_date}</p>
+                </div>
+                <div className="col-6 d-none d-sm-block">
+                  <h5 className="fw-bolder" style={{ color: "#f4c10f" }}>
+                    Offical website
+                  </h5>
+                  <a
+                    href={detail.homepage}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    {detail.homepage}
+                  </a>
+                </div>
+                <div className="col-12">
+                  <h5 className="fw-bolder" style={{ color: "#f4c10f" }}>
+                    Overview
+                  </h5>
+                  <p className="col-12">{detail.overview}</p>
+                </div>
+                <div className="col-12">
+                  <img
+                    className="pointer"
+                    src={Trailer}
+                    alt="Trailer"
+                    onClick={() => setIsOpen(true)}
+                    style={{ width: "150px" }}
+                  />
+                </div>
+              </div>
             </div>
           </div>
-          <div className="col-lg-12 col-md-12 col-12 m-1 mt-4">
-            <h3 className="fw-bolder  text-center" style={{ color: "#f4c10f" }}>
-              Similar movies
-            </h3>
-            <div className="d-none d-md-block">
-              <div className="ccr">{similarMoviesList}</div>
+          <div className="row FilterDiv">
+            <div className="col-lg-12 col-md-12 col-12 m-1">
+              <h3
+                className="fw-bolder text-center"
+                style={{ color: "#f4c10f" }}
+              >
+                Cast
+              </h3>
+              <div className="d-none d-md-block">
+                <div className="ccr">{castList}</div>
+              </div>
+              <div className="d-md-none">
+                <div className="ccc">{castList}</div>
+              </div>
             </div>
-            <div className="d-md-none">
-              <div className="ccc">{similarMoviesList}</div>
+            <div className="col-lg-12 col-md-12 col-12 m-1 mt-4">
+              <h3
+                className="fw-bolder  text-center"
+                style={{ color: "#f4c10f" }}
+              >
+                Similar movies
+              </h3>
+              <div className="d-none d-md-block">
+                <div className="ccr">{similarMoviesList}</div>
+              </div>
+              <div className="d-md-none">
+                <div className="ccc">{similarMoviesList}</div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="col-lg-5"></div>
+          <div className="col-lg-5"></div>
+        </div>
       </div>
-    </div>
+    </ErrorBoundary>
   );
 };
 
