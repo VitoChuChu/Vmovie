@@ -1,15 +1,14 @@
 import fetch from "node-fetch";
 
-const apiKey = "0256639a2d7d7afd446f8a3d2dcc94b1";
 const url = "https://api.themoviedb.org/3";
 const imageUrl = "https://image.tmdb.org/t/p/original/";
 const imageUrlPos_low = "https://image.tmdb.org/t/p/w500/";
-const popularUrl = `${url}/movie/popular?api_key=${apiKey}&language=en-US&page=1&region=TW`;
-const nowPlayingUrl = `${url}/movie/now_playing?api_key=${apiKey}&language=en-US&page=1&region=TW`;
-const upComingUrl = `${url}/movie/upcoming?api_key=${apiKey}&language=en-US&page=1&region=TW`;
-const genreUrl = `${url}/genre/movie/list?api_key=${apiKey}&language=en-US`;
+const popularUrl = `${url}/movie/popular?api_key=${process.env.REACT_APP_APIKEY}&language=en-US&page=1&region=TW`;
+const nowPlayingUrl = `${url}/movie/now_playing?api_key=${process.env.REACT_APP_APIKEY}&language=en-US&page=1&region=TW`;
+const upComingUrl = `${url}/movie/upcoming?api_key=${process.env.REACT_APP_APIKEY}&language=en-US&page=1&region=TW`;
+const genreUrl = `${url}/genre/movie/list?api_key=${process.env.REACT_APP_APIKEY}&language=en-US`;
 const movieUrl = `${url}/movie`;
-const moviesUrl = `${url}/discover/movie?api_key=${apiKey}&language=en_US&page=1&with_genres=`;
+const moviesUrl = `${url}/discover/movie?api_key=${process.env.REACT_APP_APIKEY}&language=en_US&page=1&with_genres=`;
 
 export const fecthNowPlayingMovies = async () => {
   try {
@@ -89,7 +88,7 @@ export const fecthPopularMovies = async () => {
 
 export const fetchTopRatedMovies = async (page) => {
   try {
-    const topRatedUrl = `${url}/movie/top_rated?api_key=${apiKey}&language=en-US&page=${page}&region=TW`;
+    const topRatedUrl = `${url}/movie/top_rated?api_key=${process.env.REACT_APP_APIKEY}&language=en-US&page=${page}&region=TW`;
     console.log(topRatedUrl);
     const imageUrlLow = "https://image.tmdb.org/t/p/w300/";
     const data = await fetch(topRatedUrl);
@@ -113,7 +112,7 @@ export const fetchTopRatedMovies = async (page) => {
 
 export const fetchMovieDetail = async (id) => {
   try {
-    const url = `${movieUrl}/${id}?api_key=${apiKey}&language=en-US`;
+    const url = `${movieUrl}/${id}?api_key=${process.env.REACT_APP_APIKEY}&language=en-US`;
     const data = await fetch(url);
     const dataJson = await data.json();
     return dataJson;
@@ -124,7 +123,7 @@ export const fetchMovieDetail = async (id) => {
 
 export const fetchMovieVideos = async (id) => {
   try {
-    const videoUrl = `${url}/movie/${id}/videos?api_key=${apiKey}&language=en-US`;
+    const videoUrl = `${url}/movie/${id}/videos?api_key=${process.env.REACT_APP_APIKEY}&language=en-US`;
     const data = await fetch(videoUrl);
     const dataJson = await data.json();
     const dataResult = dataJson.results;
@@ -136,7 +135,7 @@ export const fetchMovieVideos = async (id) => {
 
 export const fetchMovieCast = async (id) => {
   try {
-    const CastUrl = `${url}/movie/${id}/credits?api_key=${apiKey}&language=en-US`;
+    const CastUrl = `${url}/movie/${id}/credits?api_key=${process.env.REACT_APP_APIKEY}&language=en-US`;
     const data = await fetch(CastUrl);
     const dataJson = await data.json();
     const dataCast = dataJson.cast;
@@ -154,7 +153,7 @@ export const fetchMovieCast = async (id) => {
 
 export const fetchSimilarMovies = async (id) => {
   try {
-    const similarMoviesUrl = `${url}/movie/${id}/similar?api_key=${apiKey}&language=en-US`;
+    const similarMoviesUrl = `${url}/movie/${id}/similar?api_key=${process.env.REACT_APP_APIKEY}&language=en-US`;
     const data = await fetch(similarMoviesUrl);
     const dataJson = await data.json();
     const dataResult = dataJson.results;
@@ -195,7 +194,7 @@ export const fetchUpcomingMovies = async () => {
 
 export const fetchSearchMovies = async (searchKey) => {
   try {
-    const searchUrl = `${url}/search/movie?api_key=${apiKey}&language=en-US&query=${searchKey}&page=1&include_adult=false`;
+    const searchUrl = `${url}/search/movie?api_key=${process.env.REACT_APP_APIKEY}&language=en-US&query=${searchKey}&page=1&include_adult=false`;
     const data = await fetch(searchUrl);
     const dataJson = await data.json();
     const dataResult = dataJson.results;

@@ -12,6 +12,7 @@ import Search from "./components/Search/Search.js";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage.js";
 
 function App() {
+  console.log(process.env.REACT_APP_APIKEY);
   const [status, setStatue] = useState(false);
   const [searchKey, setSearchKey] = useState("");
 
