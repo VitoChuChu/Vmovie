@@ -65,3 +65,35 @@
   width: 90%;
   max-width: none !important;
 }
+
+.like {
+  // position: absolute;
+  display: inline-block;
+  left: 200px;
+  top: 0em;
+
+  background-image: url(../../img/LikeT.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  cursor: pointer;
+}
+.fill {
+  animation: banuce 0.2s ease 0s 2 alternate;
+  background-image: url(../../img/LikeR.svg) !important;
+}
+.fill::before {
+  content: "";
+  opacity: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 5%;
+  height: 5%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: 80px -40px 0 #fed001, 80px 40px 0 #fed001, -80px -40px 0 #fed001,
+    -80px 40px 0 #fed001;
+  animation: show 0.2s steps(1, end) 0s 1;
+}

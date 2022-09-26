@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Leading from "./components/Leading/Leading.js";
@@ -6,18 +6,16 @@ import Nav from "./components/Nav/Nav.js";
 import Footer from "./components/Footer/Footer.js";
 import Homepage from "./components/Homepage/Homepage.js";
 import TopRated from "./components/TopRated/TopRated.js";
-import MyList from "./components/MyList/MyList.js";
 import FilmInfo from "./components/FilmInfo/FilmInfo.js";
 import Search from "./components/Search/Search.js";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage.js";
+import MyList from "./components/MyList/MyList.js";
 
 function App() {
-  const [status, setStatue] = useState(false);
+  const [status, setStatus] = useState(false);
   const [searchKey, setSearchKey] = useState("");
-
-  const onStatusChange = (x) => {
-    setStatue(x);
-  };
+  const [userId, setUserId] = useState("");
+  const [likeMovieList, setLikeMovieList] = useState([]);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -25,7 +23,6 @@ function App() {
       behavior: "smooth",
     });
   };
-
   class ErrorBoundary extends React.Component {
     constructor(props) {
       super(props);
@@ -41,7 +38,6 @@ function App() {
       if (this.state.errorInfo) {
         return <NotFoundPage />;
       }
-      // Normally, just render children
       return this.props.children;
     }
   }
@@ -50,8 +46,10 @@ function App() {
     <div className="App">
       <Nav
         status={status}
+        setStatus={setStatus}
         setSearchKey={setSearchKey}
         scrollToTop={scrollToTop}
+        setUserId={setUserId}
       />
       <Routes>
         <Route path="/Vmovie/" exact element={<Leading />} />
@@ -65,15 +63,22 @@ function App() {
           exact
           element={<TopRated scrollToTop={scrollToTop} />}
         />
-        {/* <Route
+
+        <Route
           path="/myList"
           exact
-          element={<MyList status={status} />}
-        /> */}
+          element={<MyList status={status} userId={userId} />}
+        />
         <Route
           path={`/Vmovie/filmInfo/:id`}
           element={
-            <FilmInfo scrollToTop={scrollToTop} ErrorBoundary={ErrorBoundary} />
+            <FilmInfo
+              scrollToTop={scrollToTop}
+              ErrorBoundary={ErrorBoundary}
+              userId={userId}
+              likeMovieList={likeMovieList}
+              setLikeMovieList={setLikeMovieList}
+            />
           }
         />
         <Route

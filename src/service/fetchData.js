@@ -89,7 +89,6 @@ export const fecthPopularMovies = async () => {
 export const fetchTopRatedMovies = async (page) => {
   try {
     const topRatedUrl = `${url}/movie/top_rated?api_key=${process.env.REACT_APP_APIKEY}&language=en-US&page=${page}&region=TW`;
-    console.log(topRatedUrl);
     const imageUrlLow = "https://image.tmdb.org/t/p/w300/";
     const data = await fetch(topRatedUrl);
     const dataJson = await data.json();

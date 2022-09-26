@@ -1,17 +1,82 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import { doc, setDoc, getDoc } from "firebase/firestore";
+import { auth, db } from "../../service/firebase-config";
 import LogoY from "../../img/VmovieLogoYS.svg";
 
-const Nav = ({ setSearchKey, scrollToTop }) => {
+const Nav = ({ status, setStatus, setSearchKey, setUserId, scrollToTop }) => {
   const [input, setInput] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    checkLoginStatus();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const checkLoginStatus = () => {
+    return auth.onAuthStateChanged((user) => {
+      if (user) {
+        setStatus(true);
+      } else {
+        setStatus(false);
+      }
+    });
+  };
+
   const searchMovies = (e) => {
     e.preventDefault();
   };
-
   const handleSearchKeyScrollToTop = () => {
     scrollToTop();
+    preventEmpty();
     setSearchKey(input);
     document.getElementById("Input").value = "";
+  };
+
+  const preventEmpty = () => {
+    if (document.getElementById("Input").value !== "") {
+      navigate("/Vmovie/search");
+    } else {
+      alert("Search keyword can not be empty!");
+    }
+  };
+
+  const logout = async () => {
+    await signOut(auth);
+    alert("Logout successed.");
+  };
+
+  const provider = new GoogleAuthProvider();
+  const loginWithGoogle = async () => {
+    await signInWithPopup(auth, provider)
+      .then((result) => {
+        const loginUser = result.user;
+        checkUserExist(loginUser.displayName, loginUser.email, loginUser.uid);
+        setUserId(loginUser.uid);
+        navigate("/Vmovie/homepage");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
+  };
+  const createUser = async (name, email, uid) => {
+    await setDoc(doc(db, "users", uid), {
+      name: name,
+      email: email,
+      wishlist: [],
+    });
+  };
+  const checkUserExist = async (name, email, uuid) => {
+    const docRef = doc(db, "users", uuid);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      console.log("User exists, did not created.");
+    } else {
+      createUser(name, email, uuid);
+    }
   };
 
   return (
@@ -44,7 +109,7 @@ const Nav = ({ setSearchKey, scrollToTop }) => {
           <ul className="navbar-nav me-auto mb-0 mb-lg-0 fs-5">
             <li className="nav-item mx-3">
               <Link
-                className="nav-link active mb-0 pointer"
+                className="nav-link active"
                 aria-current="page"
                 to="/Vmovie/homepage"
                 style={{ color: "white" }}
@@ -57,7 +122,7 @@ const Nav = ({ setSearchKey, scrollToTop }) => {
             </li>
             <li className="nav-item mx-3">
               <Link
-                className="nav-link mb-0 pointer"
+                className="nav-link"
                 to="/Vmovie/topRated"
                 style={{ color: "white" }}
                 onClick={() => {
@@ -67,34 +132,45 @@ const Nav = ({ setSearchKey, scrollToTop }) => {
                 Top rated movies
               </Link>
             </li>
-            {/* <li className="nav-item mx-3">
+            <li className="nav-item mx-3">
               <Link
-                className="nav-link mb-0 pointer"
+                className="nav-link"
                 to="/myList"
                 style={{ color: "white" }}
-                onClick={() => setRoute("myList")}
               >
-                My wishlist
+                Wishlist
               </Link>
-            </li> */}
+            </li>
+            {status === true ? (
+              <li className="nav-item mx-3">
+                <Link
+                  className="nav-link"
+                  to="/Vmovie/homepage"
+                  style={{ color: "white" }}
+                  onClick={() => logout()}
+                >
+                  Logout
+                </Link>
+              </li>
+            ) : (
+              <ul
+                className="navbar-nav me-auto mb-0 mb-lg-0 fs-5 ccc"
+                style={{ padding: "0.5rem 0 0.5rem 0" }}
+              >
+                <li
+                  className="nav-item mx-3 pointer"
+                  onClick={() => {
+                    loginWithGoogle();
+                  }}
+                >
+                  Google Login
+                </li>
+              </ul>
+            )}
           </ul>
-          {/* {status === true ? (
-            <li className="navbar-nav mb-lg-0 fs-5 nav-item pointer mx-3">
-              <Link className="nav-link mb-0" to="/" style={{ color: "white" }}>
-                Logout
-              </Link>
-            </li>
-          ) : (
-            <li className="navbar-nav  mb-lg-0 fs-5 nav-item pointer mx-3">
-              <Link className="nav-link mb-0" to="/" style={{ color: "white" }}>
-                Login
-              </Link>
-            </li>
-          )} */}
-          <form className="d-flex" onSubmit={searchMovies}>
+          <form className="d-flex m-2" onSubmit={searchMovies}>
             <input
-              className="form-control me-2"
-              style={{ width: "400px" }}
+              className="form-control me-2 pop"
               type="text"
               placeholder="Search"
               id="Input"
@@ -102,21 +178,15 @@ const Nav = ({ setSearchKey, scrollToTop }) => {
                 setInput(e.target.value);
               }}
             />
-            <Link
-              className="nav-link mb-0"
-              to="/Vmovie/search"
-              style={{ color: "white" }}
+            <button
+              className="btn btn-outline-light"
+              type="submit"
+              onClick={() => {
+                handleSearchKeyScrollToTop();
+              }}
             >
-              <button
-                className="btn btn-outline-light"
-                type="submit"
-                onClick={() => {
-                  handleSearchKeyScrollToTop();
-                }}
-              >
-                Search
-              </button>
-            </Link>
+              Search
+            </button>
           </form>
         </div>
       </div>

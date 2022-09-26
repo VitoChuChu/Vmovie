@@ -8,31 +8,45 @@ import {
 } from "../../service/fetchData";
 import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
+// eslint-disable-next-line
 import ModalDialog from "react-bootstrap/ModalDialog";
 import { Modal } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 import Trailer from "../../img/Tralier.svg";
+import { db } from "../../service/firebase-config";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 
-const FilmInfo = ({ scrollToTop, ErrorBoundary }) => {
+const FilmInfo = ({
+  scrollToTop,
+  ErrorBoundary,
+  userId,
+  likeMovieList,
+  setLikeMovieList,
+}) => {
   const params = useParams();
   const [detail, setDetail] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [video, setVideo] = useState([]);
   const [casts, setCasts] = useState([]);
   const [similarMovies, setSimilarMovies] = useState([]);
+  const [like, setLike] = useState(false);
+
+  useEffect(
+    () => {
+      const fetchAPI = async () => {
+        setDetail(await fetchMovieDetail(params.id));
+        setVideo(await fetchMovieVideos(params.id));
+        setCasts(await fetchMovieCast(params.id));
+        setSimilarMovies(await fetchSimilarMovies(params.id));
+        getUserList(userId);
+      };
+      fetchAPI();
+    }, // eslint-disable-next-line
+    [params.id]
+  );
+
   let genres = [];
-
-  useEffect(() => {
-    const fetchAPI = async () => {
-      setDetail(await fetchMovieDetail(params.id));
-      setVideo(await fetchMovieVideos(params.id));
-      setCasts(await fetchMovieCast(params.id));
-      setSimilarMovies(await fetchSimilarMovies(params.id));
-    };
-    fetchAPI();
-  }, [params.id]);
-
   genres = detail.genres;
   let genresList;
   if (genres) {
@@ -46,6 +60,43 @@ const FilmInfo = ({ scrollToTop, ErrorBoundary }) => {
       );
     });
   }
+  const onClickActions = () => {
+    scrollToTop();
+    setLike(false);
+  };
+
+  const handleLikeMovies = async () => {
+    if (!like) {
+      setLike(!like);
+      let tempList = likeMovieList.concat(detail);
+      await updateUser(tempList);
+    } else {
+      setLike(!like);
+      const index = likeMovieList.findIndex((obj) => {
+        return obj.id === detail.id;
+      });
+      if (index > -1) {
+        likeMovieList.splice(index, 1);
+      }
+      await updateUser(likeMovieList);
+    }
+  };
+
+  const updateUser = async (movies) => {
+    const userWIshlistRef = doc(db, "users", userId);
+    await updateDoc(userWIshlistRef, {
+      wishlist: movies,
+    });
+  };
+  const getUserList = async (id) => {
+    const docRef = doc(db, "users", id);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      setLikeMovieList(docSnap.data().wishlist);
+    } else {
+      console.log("No such document!");
+    }
+  };
 
   const castList = casts.slice(0, 5).map((c) => {
     return (
@@ -66,7 +117,6 @@ const FilmInfo = ({ scrollToTop, ErrorBoundary }) => {
       </div>
     );
   });
-
   const similarMoviesList = similarMovies.slice(0, 5).map((m) => {
     return (
       <div
@@ -79,7 +129,7 @@ const FilmInfo = ({ scrollToTop, ErrorBoundary }) => {
             src={m.poster_path}
             alt={m.title}
             onClick={() => {
-              scrollToTop();
+              onClickActions();
             }}
           />
         </Link>
@@ -113,7 +163,6 @@ const FilmInfo = ({ scrollToTop, ErrorBoundary }) => {
             className="container-fluid"
             url={youtubeUrl + video.key}
             playing
-            muted
             width="70vw"
             height="50vh"
             controls={true}
@@ -180,7 +229,8 @@ const FilmInfo = ({ scrollToTop, ErrorBoundary }) => {
                   </h5>
                   <p className="col-12">{detail.overview}</p>
                 </div>
-                <div className="col-12">
+
+                <div className="col-12 z2">
                   <img
                     className="pointer"
                     src={Trailer}
@@ -188,6 +238,15 @@ const FilmInfo = ({ scrollToTop, ErrorBoundary }) => {
                     onClick={() => setIsOpen(true)}
                     style={{ width: "150px" }}
                   />
+                  <div className="mt-3 col-12">
+                    <div
+                      className={`like ${like ? "fill" : null}`}
+                      style={{ width: "150px", height: "59.28px" }}
+                      onClick={() => {
+                        handleLikeMovies();
+                      }}
+                    ></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -222,7 +281,6 @@ const FilmInfo = ({ scrollToTop, ErrorBoundary }) => {
               </div>
             </div>
           </div>
-
           <div className="col-lg-5"></div>
         </div>
       </div>
