@@ -1,21 +1,25 @@
 {
   "files": {
-    "main.css": "/Vmovie/static/css/main.7bd9b1cf.css",
-    "main.js": "/Vmovie/static/js/main.0ae65124.js",
+    "main.css": "/Vmovie/static/css/main.7bfeeea8.css",
+    "main.js": "/Vmovie/static/js/main.d32c5e10.js",
     "static/media/Tapes.jpg": "/Vmovie/static/media/Tapes.2b05296140478718d4dd.jpg",
     "static/media/leaderImg.jpg": "/Vmovie/static/media/leaderImg.40fc12189afb44c5ae3b.jpg",
     "static/media/VmovieLogoYS.svg": "/Vmovie/static/media/VmovieLogoYS.97d61e245cb3d0d574d2605839ac3fbf.svg",
     "static/media/VmovieLogoBS.svg": "/Vmovie/static/media/VmovieLogoBS.0995ac3e812294af4dd28a43cec9ead2.svg",
+    "static/media/emptyImg.svg": "/Vmovie/static/media/emptyImg.20775e56d492201cfdb97a70d3344a6c.svg",
     "static/media/Missed.svg": "/Vmovie/static/media/Missed.73acd72c4c332b4e0f108e24b2da7d1a.svg",
+    "static/media/loginImg.svg": "/Vmovie/static/media/loginImg.93778589041379acb58c62141d80a843.svg",
     "static/media/404.svg": "/Vmovie/static/media/404.60d8b392ec025841b48a65a96ced5d3c.svg",
     "static/media/TMBD.png": "/Vmovie/static/media/TMBD.56d33b39eee0e509d540.png",
     "static/media/Tralier.svg": "/Vmovie/static/media/Tralier.ebdfe523be2708f0da82d49bbac8cb9b.svg",
+    "static/media/LikeR.svg": "/Vmovie/static/media/LikeR.4f3678d5e3734e453777.svg",
+    "static/media/LikeT.svg": "/Vmovie/static/media/LikeT.d7482ed536c9548b3cb2.svg",
     "index.html": "/Vmovie/index.html",
-    "main.7bd9b1cf.css.map": "/Vmovie/static/css/main.7bd9b1cf.css.map",
-    "main.0ae65124.js.map": "/Vmovie/static/js/main.0ae65124.js.map"
+    "main.7bfeeea8.css.map": "/Vmovie/static/css/main.7bfeeea8.css.map",
+    "main.d32c5e10.js.map": "/Vmovie/static/js/main.d32c5e10.js.map"
   },
   "entrypoints": [
-    "static/css/main.7bd9b1cf.css",
-    "static/js/main.0ae65124.js"
+    "static/css/main.7bfeeea8.css",
+    "static/js/main.d32c5e10.js"
   ]
 }
