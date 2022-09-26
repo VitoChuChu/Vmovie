@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "./TopRated.css";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 import { fetchTopRatedMovies } from "../../service/fetchData.js";
 
-const TopRated = ({}) => {
+const TopRated = () => {
   const [topM, setTopM] = useState([]);
   const [page, setPage] = useState(1);
   const [loadMore, setLoadMore] = useState([]);
@@ -15,6 +15,7 @@ const TopRated = ({}) => {
       setTopM(await fetchTopRatedMovies(page));
     };
     fetchAPI();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -22,6 +23,7 @@ const TopRated = ({}) => {
       setTopM(topM.concat(loadMore));
     };
     fetchAPI();
+    // eslint-disable-next-line
   }, [loadMore]);
 
   const handleLoadMoreMovies = async () => {
@@ -67,7 +69,7 @@ const TopRated = ({}) => {
             >
               <h3
                 className="pointer"
-                style={{ color: "black", margin: "1vh", color: "#f4c10f" }}
+                style={{ margin: "1vh", color: "#f4c10f" }}
               >
                 Click here for detail
               </h3>

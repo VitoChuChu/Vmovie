@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Leading.css";
 import LogoB from "../../img/VmovieLogoBS.svg";
 
-const Leading = ({}) => {
+const Leading = () => {
   return (
     <div className="container-fluid leadingBKG p-0">
       <div style={{ height: "66px" }}></div>

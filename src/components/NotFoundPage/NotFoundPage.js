@@ -2,7 +2,7 @@ import React from "react";
 import notFound from "../../img/404.svg";
 import { Link } from "react-router-dom";
 
-const NotFoundPage = ({}) => {
+const NotFoundPage = () => {
   return (
     <div className="container">
       <div className="row">
