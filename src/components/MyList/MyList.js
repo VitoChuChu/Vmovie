@@ -9,7 +9,6 @@ import { doc, getDoc } from "firebase/firestore";
 
 const MyList = ({ status, userId }) => {
   const [userWishList, setUserWishList] = useState([]);
-
   const getData = async () => {
     const docRef = doc(db, "users", userId);
     try {
@@ -25,7 +24,7 @@ const MyList = ({ status, userId }) => {
   useEffect(() => {
     getData();
     // eslint-disable-next-line
-  }, []);
+  }, [status]);
 
   return (
     <div className="container-fluid MyListBKG">

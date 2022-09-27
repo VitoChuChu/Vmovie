@@ -79,10 +79,18 @@ const Nav = ({ status, setStatus, setSearchKey, setUserId, scrollToTop }) => {
     }
   };
 
+  const el = document.getElementById("collapsedNav");
+  const clickedEl = document.getElementsByClassName("clicked");
+  for (let i = 0; i < clickedEl.length; i++) {
+    clickedEl[i].addEventListener("click", function () {
+      el.click();
+    });
+  }
+
   return (
     <nav className="navbar navbar-expand-lg bg-dark fixed-top">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/Vmovie/">
+        <Link className="navbar-brand clicked" to="/Vmovie/">
           <img
             src={LogoY}
             alt="Vmovie"
@@ -94,6 +102,7 @@ const Nav = ({ status, setStatus, setSearchKey, setUserId, scrollToTop }) => {
           />
         </Link>
         <button
+          id="collapsedNav"
           className="navbar-toggler navbar-expand-sm"
           type="button"
           data-bs-toggle="collapse"
@@ -109,7 +118,7 @@ const Nav = ({ status, setStatus, setSearchKey, setUserId, scrollToTop }) => {
           <ul className="navbar-nav me-auto mb-0 mb-lg-0 fs-5">
             <li className="nav-item mx-3">
               <Link
-                className="nav-link active"
+                className="nav-link active clicked"
                 aria-current="page"
                 to="/Vmovie/homepage"
                 style={{ color: "white" }}
@@ -122,7 +131,7 @@ const Nav = ({ status, setStatus, setSearchKey, setUserId, scrollToTop }) => {
             </li>
             <li className="nav-item mx-3">
               <Link
-                className="nav-link"
+                className="nav-link clicked"
                 to="/Vmovie/topRated"
                 style={{ color: "white" }}
                 onClick={() => {
@@ -134,8 +143,8 @@ const Nav = ({ status, setStatus, setSearchKey, setUserId, scrollToTop }) => {
             </li>
             <li className="nav-item mx-3">
               <Link
-                className="nav-link"
-                to="/myList"
+                className="nav-link clicked"
+                to="/Vmovie/myList"
                 style={{ color: "white" }}
               >
                 Wishlist
@@ -144,7 +153,7 @@ const Nav = ({ status, setStatus, setSearchKey, setUserId, scrollToTop }) => {
             {status === true ? (
               <li className="nav-item mx-3">
                 <Link
-                  className="nav-link"
+                  className="nav-link clicked"
                   to="/Vmovie/homepage"
                   style={{ color: "white" }}
                   onClick={() => logout()}
@@ -158,7 +167,7 @@ const Nav = ({ status, setStatus, setSearchKey, setUserId, scrollToTop }) => {
                 style={{ padding: "0.5rem 0 0.5rem 0" }}
               >
                 <li
-                  className="nav-item mx-3 pointer"
+                  className="nav-item mx-3 pointer clicked"
                   onClick={() => {
                     loginWithGoogle();
                   }}
@@ -179,7 +188,7 @@ const Nav = ({ status, setStatus, setSearchKey, setUserId, scrollToTop }) => {
               }}
             />
             <button
-              className="btn btn-outline-light"
+              className="btn btn-outline-light clicked"
               type="submit"
               onClick={() => {
                 handleSearchKeyScrollToTop();

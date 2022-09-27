@@ -65,7 +65,7 @@ function App() {
         />
 
         <Route
-          path="/myList"
+          path="/Vmovie/myList"
           exact
           element={<MyList status={status} userId={userId} />}
         />
