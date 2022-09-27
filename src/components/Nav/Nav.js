@@ -79,13 +79,17 @@ const Nav = ({ status, setStatus, setSearchKey, setUserId, scrollToTop }) => {
     }
   };
 
-  const el = document.getElementById("collapsedNav");
-  const clickedEl = document.getElementsByClassName("clicked");
-  for (let i = 0; i < clickedEl.length; i++) {
-    clickedEl[i].addEventListener("click", function () {
-      el.click();
-    });
-  }
+  window.addEventListener("resize", () => {
+    if (window.innerWidth < 992) {
+      const el = document.getElementById("collapsedNav");
+      const clickedEl = document.getElementsByClassName("clicked");
+      for (let i = 0; i < clickedEl.length; i++) {
+        clickedEl[i].addEventListener("click", function () {
+          el.click();
+        });
+      }
+    }
+  });
 
   return (
     <nav className="navbar navbar-expand-lg bg-dark fixed-top">
@@ -177,6 +181,11 @@ const Nav = ({ status, setStatus, setSearchKey, setUserId, scrollToTop }) => {
               </ul>
             )}
           </ul>
+          {status ? (
+            <h5 className="m-1 text-center" style={{ color: "#f4c10f" }}>
+              {auth.currentUser.email}
+            </h5>
+          ) : null}
           <form className="d-flex m-2" onSubmit={searchMovies}>
             <input
               className="form-control me-2 pop"

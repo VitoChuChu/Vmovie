@@ -159,14 +159,16 @@ const FilmInfo = ({
           </Modal.Title>
         </Modal.Header>
         <Modal.Body style={{ backgroundColor: "#000000" }}>
-          <ReactPlayer
-            className="container-fluid"
-            url={youtubeUrl + video.key}
-            playing
-            width="70vw"
-            height="50vh"
-            controls={true}
-          ></ReactPlayer>
+          <div className="player-wrapper">
+            <ReactPlayer
+              className="react-player"
+              url={youtubeUrl + video.key}
+              playing
+              width="100%"
+              height="100%"
+              controls={true}
+            ></ReactPlayer>
+          </div>
         </Modal.Body>
       </Modal>
     );
@@ -229,13 +231,14 @@ const FilmInfo = ({
                   </h5>
                   <p className="col-12">{detail.overview}</p>
                 </div>
-
                 <div className="col-12 z2">
                   <img
                     className="pointer"
                     src={Trailer}
                     alt="Trailer"
                     onClick={() => setIsOpen(true)}
+                    data-bs-toggle="modal"
+                    data-bs-target="#trailerModal"
                     style={{ width: "150px" }}
                   />
                   <div className="mt-3 col-12">

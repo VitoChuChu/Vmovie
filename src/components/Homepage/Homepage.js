@@ -9,7 +9,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
-
 import "./Homepage.css";
 import {
   fecthNowPlayingMovies,
@@ -18,10 +17,11 @@ import {
   fecthPopularMovies,
   fetchUpcomingMovies,
 } from "../../service/fetchData.js";
+import Loader from "../Loader/Loader.jsx";
 
 const Homepage = ({ scrollToTop }) => {
-  const [popM, setPopM] = useState([]);
   const [nowM, setNowM] = useState([]);
+  const [popM, setPopM] = useState([]);
   const [upM, setUpM] = useState([]);
   const [genres, setGenres] = useState([]);
   const [movieByGenre, setMovieByGenre] = useState([]);
@@ -193,187 +193,191 @@ const Homepage = ({ scrollToTop }) => {
     );
   });
 
-  return (
-    <div>
-      <div style={{ height: "66px" }}></div>
-      <div className="container-fluid">
-        <div className="row mt-2 ccr">
-          <div className="col-11">
-            <Carousel fade indicators={false} interval={5000}>
-              {nowPlayingMovies}
-            </Carousel>
+  if (nowM.lenght === 0) {
+    return <Loader />;
+  } else {
+    return (
+      <div>
+        <div style={{ height: "66px" }}></div>
+        <div className="container-fluid">
+          <div className="row mt-2 ccr">
+            <div className="col-11">
+              <Carousel fade indicators={false} interval={5000}>
+                {nowPlayingMovies}
+              </Carousel>
+            </div>
           </div>
-        </div>
-        <div className="row mt-3 ccr">
-          <h2 className="text-center" style={{ color: "#f4c10f" }}>
-            Which genre you wanna to have?
-          </h2>
-          <div className="col-11">
-            <ul className="list-inline m-0 ccr">{generList}</ul>
-          </div>
-        </div>
-        <div className="row mt-3 ccr">
-          <div className="col-10">
+          <div className="row mt-3 ccr">
             <h2 className="text-center" style={{ color: "#f4c10f" }}>
-              Here you go
+              Which genre you wanna to have?
             </h2>
-            <Swiper
-              slidesPerView={5}
-              spaceBetween={20}
-              slidesPerGroupAuto={true}
-              loop={false}
-              loopFillGroupWithBlank={true}
-              pagination={{
-                clickable: true,
-              }}
-              navigation={true}
-              modules={[Navigation]}
-              breakpoints={{
-                320: {
-                  slidesPerView: 1,
-                  spaceBetween: 20,
-                },
-                760: {
-                  slidesPerView: 3,
-                  spaceBetween: 20,
-                },
-                1000: {
-                  slidesPerView: 4,
-                  spaceBetween: 20,
-                },
-                1200: {
-                  slidesPerView: 6,
-                  spaceBetween: 20,
-                },
-              }}
-              className="mySwiper"
-            >
-              {moviesList}
-            </Swiper>
+            <div className="col-11">
+              <ul className="list-inline m-0 ccr">{generList}</ul>
+            </div>
           </div>
-        </div>
-        <div className="row mt-3 ccr">
-          <div className="col-10">
-            <h2 className="text-center" style={{ color: "#f4c10f" }}>
-              What hot this week
-            </h2>
-            <Swiper
-              slidesPerView={5}
-              spaceBetween={20}
-              slidesPerGroupAuto={true}
-              loop={false}
-              loopFillGroupWithBlank={true}
-              pagination={{
-                clickable: true,
-              }}
-              navigation={true}
-              modules={[Navigation]}
-              breakpoints={{
-                320: {
-                  slidesPerView: 1,
-                  spaceBetween: 20,
-                },
-                760: {
-                  slidesPerView: 3,
-                  spaceBetween: 20,
-                },
-                1000: {
-                  slidesPerView: 4,
-                  spaceBetween: 20,
-                },
-                1200: {
-                  slidesPerView: 6,
-                  spaceBetween: 20,
-                },
-              }}
-              className="mySwiper"
-            >
-              {popularMovies}
-            </Swiper>
+          <div className="row mt-3 ccr">
+            <div className="col-10">
+              <h2 className="text-center" style={{ color: "#f4c10f" }}>
+                Here you go
+              </h2>
+              <Swiper
+                slidesPerView={5}
+                spaceBetween={20}
+                slidesPerGroupAuto={true}
+                loop={false}
+                loopFillGroupWithBlank={true}
+                pagination={{
+                  clickable: true,
+                }}
+                navigation={true}
+                modules={[Navigation]}
+                breakpoints={{
+                  320: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                  },
+                  760: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                  },
+                  1000: {
+                    slidesPerView: 4,
+                    spaceBetween: 20,
+                  },
+                  1200: {
+                    slidesPerView: 6,
+                    spaceBetween: 20,
+                  },
+                }}
+                className="mySwiper"
+              >
+                {moviesList}
+              </Swiper>
+            </div>
           </div>
-        </div>
-        <div className="row mt-3 ccr">
-          <div className="col-10">
-            <h2 className="text-center" style={{ color: "#f4c10f" }}>
-              Now Playing movies
-            </h2>
-            <Swiper
-              slidesPerView={5}
-              spaceBetween={20}
-              slidesPerGroupAuto={true}
-              loop={false}
-              loopFillGroupWithBlank={true}
-              pagination={{
-                clickable: true,
-              }}
-              navigation={true}
-              modules={[Navigation]}
-              breakpoints={{
-                320: {
-                  slidesPerView: 1,
-                  spaceBetween: 20,
-                },
-                760: {
-                  slidesPerView: 3,
-                  spaceBetween: 20,
-                },
-                1000: {
-                  slidesPerView: 4,
-                  spaceBetween: 20,
-                },
-                1200: {
-                  slidesPerView: 6,
-                  spaceBetween: 20,
-                },
-              }}
-              className="mySwiper"
-            >
-              {nowPlayingMoviesAll}
-            </Swiper>
+          <div className="row mt-3 ccr">
+            <div className="col-10">
+              <h2 className="text-center" style={{ color: "#f4c10f" }}>
+                What hot this week
+              </h2>
+              <Swiper
+                slidesPerView={5}
+                spaceBetween={20}
+                slidesPerGroupAuto={true}
+                loop={false}
+                loopFillGroupWithBlank={true}
+                pagination={{
+                  clickable: true,
+                }}
+                navigation={true}
+                modules={[Navigation]}
+                breakpoints={{
+                  320: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                  },
+                  760: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                  },
+                  1000: {
+                    slidesPerView: 4,
+                    spaceBetween: 20,
+                  },
+                  1200: {
+                    slidesPerView: 6,
+                    spaceBetween: 20,
+                  },
+                }}
+                className="mySwiper"
+              >
+                {popularMovies}
+              </Swiper>
+            </div>
           </div>
-        </div>
-        <div className="row mt-3 ccr">
-          <div className="col-10">
-            <h2 className="text-center" style={{ color: "#f4c10f" }}>
-              Upcoming movies
-            </h2>
-            <Swiper
-              slidesPerView={5}
-              spaceBetween={20}
-              slidesPerGroupAuto={true}
-              loop={false}
-              loopFillGroupWithBlank={true}
-              pagination={{
-                clickable: true,
-              }}
-              navigation={true}
-              modules={[Navigation]}
-              breakpoints={{
-                320: {
-                  slidesPerView: 1,
-                  spaceBetween: 20,
-                },
-                760: {
-                  slidesPerView: 3,
-                  spaceBetween: 20,
-                },
-                1000: {
-                  slidesPerView: 4,
-                  spaceBetween: 20,
-                },
-                1200: {
-                  slidesPerView: 6,
-                  spaceBetween: 20,
-                },
-              }}
-              className="mySwiper"
-            >
-              {upComingMovies}
-            </Swiper>
+          <div className="row mt-3 ccr">
+            <div className="col-10">
+              <h2 className="text-center" style={{ color: "#f4c10f" }}>
+                Now Playing movies
+              </h2>
+              <Swiper
+                slidesPerView={5}
+                spaceBetween={20}
+                slidesPerGroupAuto={true}
+                loop={false}
+                loopFillGroupWithBlank={true}
+                pagination={{
+                  clickable: true,
+                }}
+                navigation={true}
+                modules={[Navigation]}
+                breakpoints={{
+                  320: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                  },
+                  760: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                  },
+                  1000: {
+                    slidesPerView: 4,
+                    spaceBetween: 20,
+                  },
+                  1200: {
+                    slidesPerView: 6,
+                    spaceBetween: 20,
+                  },
+                }}
+                className="mySwiper"
+              >
+                {nowPlayingMoviesAll}
+              </Swiper>
+            </div>
+          </div>
+          <div className="row mt-3 ccr">
+            <div className="col-10">
+              <h2 className="text-center" style={{ color: "#f4c10f" }}>
+                Upcoming movies
+              </h2>
+              <Swiper
+                slidesPerView={5}
+                spaceBetween={20}
+                slidesPerGroupAuto={true}
+                loop={false}
+                loopFillGroupWithBlank={true}
+                pagination={{
+                  clickable: true,
+                }}
+                navigation={true}
+                modules={[Navigation]}
+                breakpoints={{
+                  320: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                  },
+                  760: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                  },
+                  1000: {
+                    slidesPerView: 4,
+                    spaceBetween: 20,
+                  },
+                  1200: {
+                    slidesPerView: 6,
+                    spaceBetween: 20,
+                  },
+                }}
+                className="mySwiper"
+              >
+                {upComingMovies}
+              </Swiper>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 export default Homepage;

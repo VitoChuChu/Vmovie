@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Loader from "../Loader/Loader.jsx";
 import "./MyList.css";
 import { v4 as uuidv4 } from "uuid";
 import loginImg from "../../img/loginImg.svg";
@@ -9,6 +10,7 @@ import { doc, getDoc } from "firebase/firestore";
 
 const MyList = ({ status, userId }) => {
   const [userWishList, setUserWishList] = useState([]);
+  const [isloading, setIsLoading] = useState(true);
   const getData = async () => {
     const docRef = doc(db, "users", userId);
     try {
@@ -20,17 +22,31 @@ const MyList = ({ status, userId }) => {
       console.log(error);
     }
   };
-
   useEffect(() => {
     getData();
+    setIsLoading(false);
     // eslint-disable-next-line
   }, [status]);
 
   return (
     <div className="container-fluid MyListBKG">
       <div style={{ height: "66px" }}></div>
-      {status ? (
-        userWishList.length > 0 ? (
+      {isloading ? (
+        <Loader />
+      ) : status ? (
+        userWishList.length === 0 ? (
+          // Empty
+          <div className="ccc">
+            <img
+              src={emptyImg}
+              alt="Have a favorite movie first~"
+              style={{ width: "300px", height: "400px" }}
+            />
+            <h1 className="mt-3">It's empty here.</h1>
+            <h1 className="mt-3">Go back and find one!!</h1>
+          </div>
+        ) : (
+          // Data
           <div>
             <h1 className="ms-3 z2">My Wishlist</h1>
             <div className="MyListCardPos container-fluid">
@@ -48,18 +64,9 @@ const MyList = ({ status, userId }) => {
                 })}
             </div>
           </div>
-        ) : (
-          <div className="ccc">
-            <img
-              src={emptyImg}
-              alt="Have a favorite movie first~"
-              style={{ width: "300px", height: "400px" }}
-            />
-            <h1 className="mt-3">It's empty here.</h1>
-            <h1 className="mt-3">Go back and find one!!</h1>
-          </div>
         )
       ) : (
+        // Login
         <div className="ccc">
           <img
             src={loginImg}

@@ -3,6 +3,7 @@ import "./TopRated.css";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 import { fetchTopRatedMovies } from "../../service/fetchData.js";
+import Loader from "../Loader/Loader.jsx";
 
 const TopRated = () => {
   const [topM, setTopM] = useState([]);
@@ -30,7 +31,6 @@ const TopRated = () => {
     setPage(page + 1);
     setLoadMore(await fetchTopRatedMovies(page));
   };
-
   const topRateMovies = topM.map((item) => {
     return (
       <div
@@ -79,25 +79,28 @@ const TopRated = () => {
       </div>
     );
   });
-
-  return (
-    <div className="">
-      <div className="container-fluid p-0">
-        <div style={{ height: "66px" }}></div>
-        <h1 className="ms-3 z2">Top Rated moives in history</h1>
-        <div className="row ccc">{topRateMovies}</div>
-        <div className="ccc">
-          <button
-            className="btn btn-outline-info fs-2 m-3"
-            onClick={() => {
-              handleLoadMoreMovies();
-            }}
-          >
-            Load More
-          </button>
+  if (topM.length === 0) {
+    return <Loader />;
+  } else {
+    return (
+      <div className="">
+        <div className="container-fluid p-0">
+          <div style={{ height: "66px" }}></div>
+          <h1 className="ms-3 z2">Top Rated moives in history</h1>
+          <div className="row ccc">{topRateMovies}</div>
+          <div className="ccc">
+            <button
+              className="btn btn-outline-info fs-2 m-3"
+              onClick={() => {
+                handleLoadMoreMovies();
+              }}
+            >
+              Load More
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 export default TopRated;

@@ -97,3 +97,14 @@
     -80px 40px 0 #fed001;
   animation: show 0.2s steps(1, end) 0s 1;
 }
+
+.player-wrapper {
+  position: relative;
+  padding-top: 43%;
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
