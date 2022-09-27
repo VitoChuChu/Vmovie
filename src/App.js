@@ -51,7 +51,7 @@ function App() {
         scrollToTop={scrollToTop}
         setUserId={setUserId}
       />
-      <Routes>
+      <Routes basename="/Vmovie">
         <Route path="/Vmovie/" exact element={<Leading />} />
         <Route
           path="/Vmovie/homepage"
