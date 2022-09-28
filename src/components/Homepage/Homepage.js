@@ -103,6 +103,9 @@ const Homepage = ({ scrollToTop }) => {
           onClick={() => {
             handleGenreClick(item.id);
           }}
+          style={{
+            width: "133px",
+          }}
         >
           {item.name}
         </button>
@@ -211,7 +214,7 @@ const Homepage = ({ scrollToTop }) => {
             <h2 className="text-center" style={{ color: "#f4c10f" }}>
               Which genre you wanna to have?
             </h2>
-            <div className="col-11">
+            <div className="col-12">
               <ul className="list-inline m-0 ccr">{generList}</ul>
             </div>
           </div>
