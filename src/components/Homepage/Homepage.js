@@ -99,12 +99,13 @@ const Homepage = ({ scrollToTop }) => {
       <li className="list-inline-item m-1" key={uuidv4()}>
         <button
           type="button"
-          className="btn btn-outline-info"
+          className="btn btn-outline-info btn-sm"
           onClick={() => {
             handleGenreClick(item.id);
           }}
           style={{
-            width: "133px",
+            width: "8rem",
+            fontSize: "1rem",
           }}
         >
           {item.name}
@@ -182,14 +183,16 @@ const Homepage = ({ scrollToTop }) => {
     return (
       <SwiperSlide key={uuidv4()}>
         <div className="ccc">
-          <div className="img-wrapper">
-            <img
-              className="img-fluid blur"
-              src={item.poster_path}
-              alt={item.title}
-            />
-            <p className="content fade text-center">{item.title}</p>
-          </div>
+          <Link to={`/Vmovie/filmInfo/${item.id}`}>
+            <div className="img-wrapper">
+              <img
+                className="img-fluid blur"
+                src={item.poster_path}
+                alt={item.title}
+              />
+              <p className="content fade text-center">{item.title}</p>
+            </div>
+          </Link>
           <h5 className="textPos text-center">{item.title}</h5>
         </div>
       </SwiperSlide>

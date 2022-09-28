@@ -79,20 +79,18 @@ const Nav = ({ status, setStatus, setSearchKey, setUserId, scrollToTop }) => {
     }
   };
 
-  window.addEventListener("resize", () => {
-    if (window.innerWidth < 992) {
-      const el = document.getElementById("collapsedNav");
-      const clickedEl = document.getElementsByClassName("clicked");
-      for (let i = 0; i < clickedEl.length; i++) {
-        clickedEl[i].addEventListener("click", function () {
-          el.click();
-        });
-      }
+  if (window.innerWidth < 992) {
+    const el = document.getElementById("collapsedNav");
+    const clickedEl = document.getElementsByClassName("clicked");
+    for (let i = 0; i < clickedEl.length; i++) {
+      clickedEl[i].addEventListener("click", function () {
+        el.click();
+      });
     }
-  });
+  }
 
   return (
-    <nav className="navbar navbar-expand-lg bg-dark fixed-top">
+    <nav className="navbar navbar-expand-lg bg-dark fixed-top p-0">
       <div className="container-fluid">
         <Link className="navbar-brand clicked" to="/Vmovie/">
           <img
@@ -107,18 +105,18 @@ const Nav = ({ status, setStatus, setSearchKey, setUserId, scrollToTop }) => {
         </Link>
         <button
           id="collapsedNav"
-          className="navbar-toggler navbar-expand-sm"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
           aria-expanded="false"
           aria-label="Toggle navigation"
           style={{ backgroundColor: "#f4c10f" }}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="navbar-collapse collapse" id="navbarSupportedContent">
+        <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto mb-0 mb-lg-0 fs-5">
             <li className="nav-item mx-3">
               <Link

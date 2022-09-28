@@ -50,11 +50,6 @@
   text-decoration: none;
 }
 
-.basicBox {
-  width: 200px;
-  height: 200px;
-}
-
 .img-wrapper {
   position: relative;
   overflow: hidden;
