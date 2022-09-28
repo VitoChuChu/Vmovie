@@ -142,6 +142,7 @@ const FilmInfo = ({
     );
   });
   const youtubeUrl = "https://www.youtube.com/watch?v=";
+
   const MoviePalyerModal = (props) => {
     return (
       <Modal
@@ -179,12 +180,6 @@ const FilmInfo = ({
     <ErrorBoundary>
       <div>
         <div className="container-fluid p-0">
-          <MoviePalyerModal
-            show={isOpen}
-            onHide={() => {
-              setIsOpen(false);
-            }}
-          ></MoviePalyerModal>
           <div>
             <img className="FilmInfoBKG" src={imgUrl_low} alt={detail.name} />
           </div>
@@ -232,6 +227,12 @@ const FilmInfo = ({
                   <p className="col-12">{detail.overview}</p>
                 </div>
                 <div className="col-12 z2">
+                  <MoviePalyerModal
+                    show={isOpen}
+                    onHide={() => {
+                      setIsOpen(false);
+                    }}
+                  ></MoviePalyerModal>
                   <img
                     className="pointer"
                     src={Trailer}
