@@ -8,8 +8,8 @@ const Leading = () => {
     <div className="container-fluid leadingBKG p-0">
       <div style={{ height: "66px" }}></div>
       <div className="row">
-        <img className="col-xl-3 py-4" src={LogoB} alt="Vmovie" />
-        <div className="col-xl-8"></div>
+        <img className="col-xl-3 py-2" src={LogoB} alt="Vmovie" />
+        <div className="col-xl-9"></div>
       </div>
       <div className="d-none d-xl-block" style={{ height: "15vh" }}></div>
       <div className="row ccr">
