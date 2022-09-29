@@ -87,7 +87,9 @@ const TopRated = () => {
         <div className="container-fluid p-0">
           <div style={{ height: "66px" }}></div>
           <h1 className="ms-3 z2">Top Rated moives in history</h1>
+
           <div className="row ccc">{topRateMovies}</div>
+
           <div className="ccc">
             <button
               className="btn btn-outline-info fs-2 m-3"
