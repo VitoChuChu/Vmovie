@@ -277,10 +277,10 @@ const FilmInfo = ({
               >
                 Similar movies
               </h3>
-              <div className="d-none d-md-block">
+              <div className="d-none d-md-block mt-2 mb-2">
                 <div className="ccr">{similarMoviesList}</div>
               </div>
-              <div className="d-md-none">
+              <div className="d-md-none mt-2">
                 <div className="ccc">{similarMoviesList}</div>
               </div>
             </div>

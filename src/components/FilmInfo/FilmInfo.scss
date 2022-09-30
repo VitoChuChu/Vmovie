@@ -19,7 +19,7 @@
 
 .divSize {
   width: 16vw;
-  height: 45vh;
+  height: auto;
 }
 
 .imgSize {
@@ -77,7 +77,6 @@
 }
 
 .like {
-  // position: absolute;
   display: inline-block;
   left: 200px;
   top: 0em;

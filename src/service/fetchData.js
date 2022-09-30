@@ -1,5 +1,3 @@
-// import fetch from "node-fetch";
-
 const url = "https://api.themoviedb.org/3";
 const imageUrl = "https://image.tmdb.org/t/p/original/";
 const imageUrlPos_low = "https://image.tmdb.org/t/p/w500/";
