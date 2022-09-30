@@ -101,7 +101,7 @@ const FilmInfo = ({
   const castList = casts.slice(0, 5).map((c) => {
     return (
       <div
-        className="col-12 col-md-6 col-lg-2 text-center m-1 divSize"
+        className="col-12 col-md-6 col-lg-2 text-center m-2 divSize"
         key={uuidv4()}
       >
         <img
@@ -120,7 +120,7 @@ const FilmInfo = ({
   const similarMoviesList = similarMovies.slice(0, 5).map((m) => {
     return (
       <div
-        className="col-12 col-md-6 col-lg-2 text-center m-1 divSize"
+        className="col-12 col-md-6 col-lg-2 text-center m-2 divSize"
         key={uuidv4()}
       >
         <Link to={`/Vmovie/filmInfo/${m.id}`}>
@@ -196,19 +196,19 @@ const FilmInfo = ({
                 <div className="col-12 col-lg-12 d-none d-sm-block">
                   <ul className="list-inline">{genresList}</ul>
                 </div>
-                <div className="col-12 col-lg-3">
+                <div className="col-12 col-md-2 col-lg-3">
                   <h5 className="fw-bolder" style={{ color: "#f4c10f" }}>
                     Run time
                   </h5>
                   <p className="">{detail.runtime}mins</p>
                 </div>
-                <div className="col-12 col-lg-3">
+                <div className="col-12 col-md-3 col-lg-3">
                   <h5 className="fw-bolder" style={{ color: "#f4c10f" }}>
                     Release Date
                   </h5>
                   <p className="">{detail.release_date}</p>
                 </div>
-                <div className="col-6 d-none d-sm-block">
+                <div className="col-6 col-md-7 col-lg-6 d-none d-sm-block">
                   <h5 className="fw-bolder" style={{ color: "#f4c10f" }}>
                     Offical website
                   </h5>

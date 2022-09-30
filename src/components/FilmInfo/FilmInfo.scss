@@ -19,17 +19,17 @@
 
 .divSize {
   width: 16vw;
-  height: 47vh;
+  height: 45vh;
 }
 
 .imgSize {
-  width: 12vw;
-  height: 32vh;
+  width: 13vw;
+  height: auto;
 }
 
 .similarImgSize {
-  width: 12vw;
-  height: 32vh;
+  width: 13vw;
+  height: auto;
 }
 
 .step {
@@ -43,18 +43,28 @@
   }
   .imgSize {
     width: 25vw;
-    height: 35vh;
+    height: auto;
   }
   .similarImgSize {
     width: 25vw;
-    height: 35vh;
+    height: auto;
   }
 }
 
 @media screen and (max-width: 767px) {
   .similarImgSize {
     width: 60vw;
-    height: 30vh;
+    height: auto;
+  }
+  .step {
+    height: 5vh;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .similarImgSize {
+    width: 45vw;
+    height: auto;
   }
   .step {
     height: 5vh;

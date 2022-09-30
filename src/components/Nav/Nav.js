@@ -92,7 +92,7 @@ const Nav = ({ status, setStatus, setSearchKey, setUserId, scrollToTop }) => {
   return (
     <nav className="navbar navbar-expand-lg bg-dark fixed-top p-0">
       <div className="container-fluid">
-        <Link className="navbar-brand clicked" to="/Vmovie/">
+        <Link className="navbar-brand" to="/Vmovie/">
           <img
             src={LogoY}
             alt="Vmovie"
