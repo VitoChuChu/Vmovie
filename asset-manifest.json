@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Vmovie/static/css/main.fa1b9fd7.css",
-    "main.js": "/Vmovie/static/js/main.964eaaed.js",
+    "main.css": "/Vmovie/static/css/main.00cc11b2.css",
+    "main.js": "/Vmovie/static/js/main.203ad774.js",
     "static/media/Tapes.jpg": "/Vmovie/static/media/Tapes.2b05296140478718d4dd.jpg",
     "static/media/leaderImg.jpg": "/Vmovie/static/media/leaderImg.40fc12189afb44c5ae3b.jpg",
     "static/media/VmovieLogoYS.svg": "/Vmovie/static/media/VmovieLogoYS.97d61e245cb3d0d574d2605839ac3fbf.svg",
@@ -15,11 +15,11 @@
     "static/media/LikeR.svg": "/Vmovie/static/media/LikeR.4f3678d5e3734e453777.svg",
     "static/media/LikeT.svg": "/Vmovie/static/media/LikeT.d7482ed536c9548b3cb2.svg",
     "index.html": "/Vmovie/index.html",
-    "main.fa1b9fd7.css.map": "/Vmovie/static/css/main.fa1b9fd7.css.map",
-    "main.964eaaed.js.map": "/Vmovie/static/js/main.964eaaed.js.map"
+    "main.00cc11b2.css.map": "/Vmovie/static/css/main.00cc11b2.css.map",
+    "main.203ad774.js.map": "/Vmovie/static/js/main.203ad774.js.map"
   },
   "entrypoints": [
-    "static/css/main.fa1b9fd7.css",
-    "static/js/main.964eaaed.js"
+    "static/css/main.00cc11b2.css",
+    "static/js/main.203ad774.js"
   ]
 }
